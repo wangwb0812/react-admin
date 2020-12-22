@@ -25,11 +25,11 @@ class App extends React.Component {
   render() {
     return (
       <div className={`sidebar-container ${this.state.collapsed ? 'isCollapse' : ''}`}>
-        <div class="muen-top" onClick={this.toggleCollapsed}>
-          <div class="muen-top-icon-wrapper">
-            <img class="muen-top-icon" src={logoImg} alt="logo"/>
+        <div className="muen-top" onClick={this.toggleCollapsed}>
+          <div className="muen-top-icon-wrapper">
+            <img className="muen-top-icon" src={logoImg} alt="logo"/>
           </div>
-          <span class="muen-top-title">管理系统</span>
+          <span className="muen-top-title">管理系统</span>
         </div>
         <Menu
           defaultSelectedKeys={['1']}

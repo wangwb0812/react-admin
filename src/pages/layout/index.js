@@ -13,7 +13,7 @@ class Layout extends React.Component {
       <div className="app-wrapper">
         <Sidebar />
         <div className="main-container">
-          <Navbar />
+          <Navbar history={ this.props.history }/>
           <Appmain />
         </div>
       </div>

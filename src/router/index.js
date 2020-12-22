@@ -11,7 +11,7 @@ class RouteConfig extends Component {
         <Switch>
           <Route path="/login" exact component={Login} />
           <Route path="/" component={Layout} />
-          <Redirect to="/" />
+          <Redirect to="/login" />
         </Switch>
       </HashRouter>
     )

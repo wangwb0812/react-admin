@@ -6,5 +6,7 @@ const mocks = [
 ]
 
 mocks.forEach(mockItem => {
-	Mock.mock(`${process.env.VUE_APP_BASE_API}${mockItem.url}`, mockItem.type || 'get', mockItem.response )
+	Mock.mock(`/api${mockItem.url}`, mockItem.type || 'get', mockItem.response )
 })
+
+console.log('********mock启动***********')

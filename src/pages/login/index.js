@@ -18,6 +18,8 @@ class Login extends React.Component {
       this.setState({
         loading: false
       })
+      console.log('click', this);
+      this.props.history.push('/')
     }).catch(err => {
       this.setState({
         loading: false
