@@ -1,0 +1,54 @@
+@import '~antd/dist/antd.css'; 
+.login-page {
+  background: url(../../imgs/login_bg.jpg) no-repeat center;
+  background-size: cover;
+  height: 100%;
+  .login-form-wrapper {
+    width: 400px;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    .login-title {
+      text-align: center;
+      color: #1ab392;
+			font-weight: normal;
+			font-size: 24px;
+			margin-bottom: 30px;
+    }
+    .ant-form-item {
+      .ant-form-item-control-input {
+        .ant-input {
+          line-height: 32px;
+          background-color: rgba(255, 255, 255, 0.2);
+          border: none;
+          border-radius: 0;
+          color: #fff;
+        }
+        .ant-input-affix-wrapper {
+          background-color: rgba(255, 255, 255, 0.2);
+          border: none;
+          .ant-input {
+            line-height: 32px;
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+            color: #fff;
+          }
+          .ant-input-password-icon {
+            color: #fff;
+          }
+        }
+      }
+    }
+    .login-btn {
+			background-color: #1ab392;
+			border-color: #1ab392;
+			width: 100%;
+      border-radius: 0;
+      height: 38px;
+		}
+  }
+  
+}
