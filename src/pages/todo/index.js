@@ -49,7 +49,6 @@ class Todo extends React.Component {
     })
   }
   handleDelete(index) {
-    console.log(this)
     const that = this
     Modal.confirm({
       title: '删除',
@@ -78,7 +77,6 @@ class Todo extends React.Component {
           renderItem={(item, index) => <List.Item>
             <Checkbox checked={item.finish} onChange={e => this.todeListChange(e, index)}>{item.text}</Checkbox>
             <Button type="danger" shape="circle" size="small" icon={<CloseOutlined />} onClick={this.handleDelete.bind(this, index)} />
-
           </List.Item>}
         />
       </Card>
