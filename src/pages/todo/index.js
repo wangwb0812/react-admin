@@ -68,6 +68,14 @@ class Todo extends React.Component {
       }
     })
   }
+  delAll() {
+    this.setState({
+      todoList: []
+    })
+  }
+  componentDidMount() {
+    console.log(process.env)
+  }
   render() {
     return (<div className="todo-list-wrapper">
       <h1 className="todo-title">今日事，今日毕</h1>
@@ -76,12 +84,13 @@ class Todo extends React.Component {
           dataSource={this.state.todoList}
           renderItem={(item, index) => <List.Item>
             <Checkbox checked={item.finish} onChange={e => this.todeListChange(e, index)}>{item.text}</Checkbox>
-            <Button type="danger" shape="circle" size="small" icon={<CloseOutlined />} onClick={this.handleDelete.bind(this, index)} />
+            <Button danger shape="circle" size="small" icon={<CloseOutlined />} onClick={this.handleDelete.bind(this, index)} />
           </List.Item>}
         />
       </Card>
       <div className="todo-list-btn">
         <Button type="primary" onClick={this.finishAll.bind(this)}>全部完成</Button>
+        <Button type="danger" onClick={this.delAll.bind(this)}>清空所有</Button>
       </div>
     </div>)
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Image } from 'antd';
+import { Avatar } from 'antd';
 import { Menu, Dropdown } from 'antd';
 import './index.scss'
 
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
             <Avatar
               style={{ backgroundColor: '#87d068', verticalAlign: 'middle' }}
               size={40}
-              src={<Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" 
             />
           </Dropdown>
         </div>

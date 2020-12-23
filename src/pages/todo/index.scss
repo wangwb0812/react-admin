@@ -1,5 +1,5 @@
 .todo-list-wrapper {
-  width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
 
   .todo-title {
@@ -18,5 +18,7 @@
 
   .todo-list-btn {
     margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
   }
 }
