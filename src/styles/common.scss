@@ -1,56 +1,60 @@
 .sidebar-container {
-	transition: all 0.28s;
-	width: 210px;
-	height: 100%;
-	position: fixed;
-	font-size: 0px;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1001;
-	overflow: hidden;
+  transition: all 0.28s;
+  width: 210px;
+  height: 100%;
+  position: fixed;
+  font-size: 0px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  overflow: hidden;
   background: #001529;
+
   &.isCollapse {
-		width: 80px;
-	}
+    width: 80px;
+  }
+
   .muen-top {
-		height: 50px;
-		line-height: 50px;
+    height: 50px;
+    line-height: 50px;
     background-color: #001529;
     overflow: hidden;
-		.muen-top-icon-wrapper {
-			display: inline-block;
-			width: 80px;
-			height: 50px;
-			text-align: center;
-			.muen-top-icon {
-				width: 32px;
-				height: 32px;
-				vertical-align: middle;
-			}
-		}
-		.muen-top-title {
-			color: #fff;
-			line-height: 50px;
-			font-size: 16px;
-			vertical-align: middle;
-		}
+
+    .muen-top-icon-wrapper {
+      display: inline-block;
+      width: 80px;
+      height: 50px;
+      text-align: center;
+
+      .muen-top-icon {
+        width: 32px;
+        height: 32px;
+        vertical-align: middle;
+      }
+    }
+
+    .muen-top-title {
+      color: #fff;
+      line-height: 50px;
+      font-size: 16px;
+      vertical-align: middle;
+    }
   }
-  
+
 }
 
 .main-container {
-	transition: all 0.28s;
+  transition: all 0.28s;
   margin-left: 210px;
+
   .app-wrapper {
     /* 50= navbar  50  */
-    height: calc(100vh - 80px);
-    margin-top: 30px;
+		height: calc(100vh - 50px);
+		padding: 20px;
     width: 100%;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
-  
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
   }
 }
-

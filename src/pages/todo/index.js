@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.scss'
-import { Card, List, Checkbox, Button } from 'antd';
+import { Card, List, Checkbox, Button, Modal } from 'antd'
+import { ExclamationCircleOutlined, CloseOutlined } from '@ant-design/icons'
 import Add from './add'
 
 class Todo extends React.Component {
@@ -47,6 +48,27 @@ class Todo extends React.Component {
       todoList
     })
   }
+  handleDelete(index) {
+    console.log(this)
+    const that = this
+    Modal.confirm({
+      title: '删除',
+      icon: <ExclamationCircleOutlined />,
+      content: '该操作将永久删除该条数据，是否继续？',
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        that.state.todoList.splice(index, 1)
+        that.setState({
+          todoList: that.state.todoList
+        })
+      },
+      onCancel() {
+        console.log('Cancel')
+      }
+    })
+  }
   render() {
     return (<div className="todo-list-wrapper">
       <h1 className="todo-title">今日事，今日毕</h1>
@@ -55,6 +77,8 @@ class Todo extends React.Component {
           dataSource={this.state.todoList}
           renderItem={(item, index) => <List.Item>
             <Checkbox checked={item.finish} onChange={e => this.todeListChange(e, index)}>{item.text}</Checkbox>
+            <Button type="danger" shape="circle" size="small" icon={<CloseOutlined />} onClick={this.handleDelete.bind(this, index)} />
+
           </List.Item>}
         />
       </Card>
