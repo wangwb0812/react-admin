@@ -69,9 +69,24 @@ class Todo extends React.Component {
     })
   }
   delAll() {
-    this.setState({
-      todoList: []
+    const that = this
+    Modal.confirm({
+      title: '删除全部数据',
+      icon: <ExclamationCircleOutlined />,
+      content: '该操作将永久删除所有数据，是否继续？',
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        that.setState({
+          todoList: []
+        })
+      },
+      onCancel() {
+        console.log('Cancel')
+      }
     })
+    
   }
   componentDidMount() {
     console.log(process.env)
