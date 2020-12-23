@@ -6,7 +6,7 @@ const mocks = [
 ]
 
 mocks.forEach(mockItem => {
-	Mock.mock(`/api${mockItem.url}`, mockItem.type || 'get', mockItem.response )
+  Mock.mock(`/api${mockItem.url}`, mockItem.type || 'get', mockItem.response)
 })
 
 console.log('********mock启动***********')

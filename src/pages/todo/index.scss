@@ -1,17 +1,21 @@
 .todo-list-wrapper {
   width: 600px;
   margin: 0 auto;
+
   .todo-title {
     font-size: 24px;
     text-align: center;
     font-weight: bold;
   }
+
   .todo-list-nav {
     display: flex;
+
     .ant-btn {
       margin-left: 5px;
     }
   }
+
   .todo-list-btn {
     margin-top: 10px;
   }
