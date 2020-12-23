@@ -1,14 +1,14 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom';
+import Todo from '../../todo/index'
 
 class Appmain extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
   render() {
     return (
       <div className="app-wrapper">
-        内容
+        <Switch>
+          <Route path='/todo' component={Todo} />
+        </Switch>
       </div>
     )
   }

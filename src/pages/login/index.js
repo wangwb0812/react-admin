@@ -19,7 +19,7 @@ class Login extends React.Component {
         loading: false
       })
       console.log('click', this);
-      this.props.history.push('/')
+      this.props.history.push('/todo')
     }).catch(err => {
       this.setState({
         loading: false
