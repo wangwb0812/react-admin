@@ -12,7 +12,7 @@ class Todo extends React.Component {
     Modal.confirm({
       title: '删除',
       icon: <ExclamationCircleOutlined />,
-      content: `确认要删除${item.text}，是否继续？`,
+      content: `确认要删除"${item.text}"，是否继续？`,
       okText: '确定',
       okType: 'danger',
       cancelText: '取消',
