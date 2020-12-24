@@ -1,14 +1,46 @@
 import React from 'react'
 import './index.scss'
-import { Card, List, Checkbox, Button } from 'antd'
-import { CloseOutlined } from '@ant-design/icons'
+import { Card, List, Checkbox, Button, Modal } from 'antd'
+import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 import Add from './add'
 import { connect } from 'react-redux'
 import { toggleTodo, delTodo, finishAll, delAll } from '../../store/todo/action'
 
 class Todo extends React.Component {
-  componentDidMount() {
-    console.log(process.env, this.props, "ppp")
+  del(item) {
+    const that = this
+    Modal.confirm({
+      title: '删除',
+      icon: <ExclamationCircleOutlined />,
+      content: `确认要删除${item.text}，是否继续？`,
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        that.props.delTodo(item.id)
+      },
+      onCancel() {
+        console.log('Cancel')
+      }
+    })
+  }
+  delAll() {
+    const that = this
+    Modal.confirm({
+      title: '删除',
+      icon: <ExclamationCircleOutlined />,
+      content: `确认要清空所有数据，是否继续？`,
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        that.props.delAll()
+      },
+      onCancel() {
+        console.log('Cancel')
+      }
+    })
+
   }
   render() {
     return (<div className="todo-list-wrapper">
@@ -18,13 +50,13 @@ class Todo extends React.Component {
           dataSource={this.props.todoList}
           renderItem={item => <List.Item key={item.id}>
             <Checkbox checked={item.finish} onChange={() => this.props.toggleTodo(item.id)}>{item.text}</Checkbox>
-            <Button danger shape="circle" size="small" icon={<CloseOutlined />} onClick={() => this.props.delTodo(item.id)} />
+            <Button danger shape="circle" size="small" icon={<CloseOutlined />} onClick={this.del.bind(this, item)} />
           </List.Item>}
         />
       </Card>
       <div className="todo-list-btn">
         <Button type="primary" onClick={this.props.finishAll}>全部完成</Button>
-        <Button type="danger" onClick={this.props.delAll}>清空所有</Button>
+        <Button type="danger" onClick={this.delAll.bind(this)}>清空所有</Button>
       </div>
     </div>)
   }
