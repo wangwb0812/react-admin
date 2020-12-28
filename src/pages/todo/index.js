@@ -2,6 +2,7 @@ import React from 'react'
 import './index.scss'
 import { Card, List, Checkbox, Button, Modal } from 'antd'
 import { ExclamationCircleOutlined, CloseOutlined } from '@ant-design/icons'
+import { Link, NavLink } from 'react-router-dom'
 import Add from './add'
 
 class Todo extends React.Component {
@@ -19,6 +20,9 @@ class Todo extends React.Component {
         }
       ]
     }
+  }
+  componentDidMount() {
+    console.log(this.props)
   }
   addList(text) {
     if (text) {
@@ -86,14 +90,31 @@ class Todo extends React.Component {
         console.log('Cancel')
       }
     })
-    
+
   }
-  componentDidMount() {
-    console.log(process.env)
-  }
+
   render() {
     return (<div className="todo-list-wrapper">
-      <h1 className="todo-title">今日事，今日毕</h1>
+      <Link
+        to={{
+          pathname: '/todolist',
+          search: 'id=1',
+        }}
+      >
+        <h1 className="todo-title">今日事，今日毕</h1>
+      </Link>
+      <NavLink
+        to={{
+          pathname: '/todolist',
+          search: 'id=2',
+        }}
+        activeStyle={{
+          fontWeight: 'bold',
+          color: 'red'
+        }}
+      >
+        <h1 className="todo-title">今日事，今日毕</h1>
+      </NavLink>
       <Card title={<Add addList={this.addList.bind(this)} />} style={{ width: '100%' }}>
         <List
           dataSource={this.state.todoList}

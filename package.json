@@ -9,8 +9,10 @@
     "axios": "^0.21.0",
     "http-proxy-middleware": "^1.0.6",
     "react": "^17.0.1",
+    "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
@@ -33,12 +35,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   },
   "devDependencies": {

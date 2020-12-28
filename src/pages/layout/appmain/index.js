@@ -8,7 +8,7 @@ class Appmain extends React.Component {
     return (
       <div className="app-wrapper">
         <Switch>
-          <Route path='/todo' component={Todo} />
+          <Route path='/todo' render ={() => (<Todo />)} />
           <Route path='/demo' component={Demo} />
           <Route path='/todolist' component={Todolist} />
         </Switch>

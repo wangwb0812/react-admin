@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Login from '../pages/login/index'
 import Layout from '../pages/layout/index'
@@ -7,13 +7,12 @@ import Layout from '../pages/layout/index'
 class RouteConfig extends Component {
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
           <Route path="/login" exact component={Login} />
           <Route path="/" component={Layout} />
-          <Redirect to="/login" />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     )
   }
 }
