@@ -40,7 +40,6 @@ class Todo extends React.Component {
         console.log('Cancel')
       }
     })
-
   }
   render() {
     return (<div className="todo-list-wrapper">

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Input } from 'antd'
+import { Button, Input, Pagination } from 'antd'
 import axios from 'axios'
+
 function HookPage(props) {
 
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(props.defaultVal || 'react');
+  
 
   useEffect(() => {
     document.title = `You clicked ${count} times`;
@@ -28,6 +30,34 @@ function HookPage(props) {
     }
   }, [value])
 
+  const [total, setTotal] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [tableData, setTableData] = useState([]);
+  
+  useEffect(() => {
+    async function fetchData() {
+      const res = await axios.get('https://hn.algolia.com/api/v1/search' ,{
+        params: {
+          query: value,
+          pageNum,
+          pageSize
+        }
+      })
+      if (res) {
+        setTableData(res.data)
+        setTotal(res.data.length * 2)
+      }
+     
+    } 
+    fetchData()
+  },[value, pageNum, pageSize])
+  
+  function pageChange(page, size) {
+    console.log(page, size)
+    setPageNum(page)
+    setPageSize(size)
+  }
   return (
     <div>
       <div style={{ display: 'flex' }}>
@@ -46,6 +76,26 @@ function HookPage(props) {
       <div>{count}</div>
       <Button type="primary" onClick={() => setCount(count + 1)}>+</Button>
       <Button type="danger" onClick={() => setCount(count - 1)}>-</Button>
+      <div>
+        <ul>
+          {
+            tableData.map(item => {
+              return <li>{item.title}</li>
+            })
+          }
+        </ul>
+        <Pagination
+          total={total}
+          defaultCurrent={pageNum}
+          defaultPageSize={pageSize}
+          showSizeChanger
+          showQuickJumper
+          onChange={pageChange}
+          showTotal={total => `${total}`}
+        />
+      </div>
+
+     
     </div>
   )
 }
