@@ -14,9 +14,6 @@ class Sidebar extends React.Component {
     super(props)
     this.state = {}
   }
-  componentDidMount() {
-    console.log(this.props, "ppp")
-  }
 
   menuItemClick(item, key, keyPath, domEvent) {
     console.log(item, key, keyPath, domEvent, this.props)
