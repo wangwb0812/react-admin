@@ -48,10 +48,14 @@
   transition: all 0.28s;
   margin-left: 210px;
 
+  &.isCollapse {
+    margin-left: 80px;
+  }
+
   .app-wrapper {
     /* 50= navbar  50  */
-		height: calc(100vh - 50px);
-		padding: 20px;
+    height: calc(100vh - 50px);
+    padding: 20px;
     width: 100%;
     position: relative;
     overflow: hidden;

@@ -3,6 +3,7 @@ import Navbar from './navbar/index'
 import Appmain from './appmain/index'
 import Sidebar from './sidebar/index'
 import './index.scss'
+import { connect } from 'react-redux'
 class Layout extends React.Component {
   constructor(props) {
     super(props)
@@ -10,10 +11,10 @@ class Layout extends React.Component {
   }
   render() {
     return (
-      <div className="app-wrapper">
+      <div className="app-wrapper" >
         <Sidebar />
-        <div className="main-container">
-          <Navbar history={ this.props.history }/>
+        <div className={`main-container ${this.props.collapsed ? 'isCollapse' : ''}`}>
+          <Navbar history={this.props.history} />
           <Appmain />
         </div>
       </div>
@@ -21,4 +22,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout
+export default connect(state => state.common)(Layout)

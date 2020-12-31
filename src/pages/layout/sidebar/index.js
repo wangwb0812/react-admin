@@ -1,6 +1,8 @@
 import React from 'react'
 import { Menu } from 'antd';
 import logoImg from '../../../imgs/logo.png'
+import { connect } from 'react-redux'
+import { collapsChange } from '../../../store/common/action'
 import {
   PieChartOutlined,
   DesktopOutlined,
@@ -10,29 +12,22 @@ import {
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      collapsed: false,
-    };
+    this.state = {}
   }
-
- 
-
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
+  componentDidMount() {
+    console.log(this.props, "ppp")
   }
 
   menuItemClick(item, key, keyPath, domEvent) {
     console.log(item, key, keyPath, domEvent, this.props)
   }
-  
+
   render() {
     return (
-      <div className={`sidebar-container ${this.state.collapsed ? 'isCollapse' : ''}`}>
-        <div className="muen-top" onClick={this.toggleCollapsed}>
+      <div className={`sidebar-container ${this.props.collapsed ? 'isCollapse' : ''}`}>
+        <div className="muen-top" onClick={this.props.collapsChange}>
           <div className="muen-top-icon-wrapper">
-            <img className="muen-top-icon" src={logoImg} alt="logo"/>
+            <img className="muen-top-icon" src={logoImg} alt="logo" />
           </div>
           <span className="muen-top-title">管理系统</span>
         </div>
@@ -41,7 +36,7 @@ class Sidebar extends React.Component {
           defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
-          inlineCollapsed={this.state.collapsed}
+          inlineCollapsed={this.props.collapsed}
           onClick={this.menuItemClick}
         >
           <Menu.Item key="1" icon={<PieChartOutlined />}>
@@ -59,4 +54,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar
+export default connect(state => state.common, { collapsChange })(Sidebar) 
