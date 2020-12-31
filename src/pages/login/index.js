@@ -2,6 +2,9 @@ import React from 'react'
 import { Form, Input, Button } from 'antd';
 import './index.scss'
 import { login } from '../../api/user'
+import { connect } from 'react-redux'
+import { setUserInfo } from '../../store/common/action'
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -18,7 +21,9 @@ class Login extends React.Component {
       this.setState({
         loading: false
       })
-      console.log('click', this);
+      console.log(this.props)
+      this.props.setUserInfo(res)
+      localStorage.setItem('userInfo', JSON.stringify(res))
       this.props.history.push('/todo')
     }).catch(err => {
       this.setState({
@@ -85,4 +90,4 @@ class Login extends React.Component {
 
 };
 
-export default Login
+export default connect( state=> state.common, {setUserInfo})(Login)

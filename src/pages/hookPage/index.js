@@ -6,7 +6,7 @@ function HookPage(props) {
 
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(props.defaultVal || 'react');
-  
+
 
   useEffect(() => {
     document.title = `You clicked ${count} times`;
@@ -34,25 +34,24 @@ function HookPage(props) {
   const [pageNum, setPageNum] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [tableData, setTableData] = useState([]);
-  
+
   useEffect(() => {
     async function fetchData() {
-      const res = await axios.get('https://hn.algolia.com/api/v1/search' ,{
+      const res = await axios.get('https://hn.algolia.com/api/v1/search', {
         params: {
-          query: value,
-          pageNum,
-          pageSize
+          query: value
         }
       })
       if (res) {
-        setTableData(res.data)
-        setTotal(res.data.length * 2)
+        console.log(res)
+        setTableData(res.data.hits)
+        setTotal(res.data.hits.length * 2)
       }
-     
-    } 
+
+    }
     fetchData()
-  },[value, pageNum, pageSize])
-  
+  }, [value])
+
   function pageChange(page, size) {
     console.log(page, size)
     setPageNum(page)
@@ -80,7 +79,7 @@ function HookPage(props) {
         <ul>
           {
             tableData.map(item => {
-              return <li>{item.title}</li>
+              return (<li key={item.objectID}>{item.title}</li>)
             })
           }
         </ul>
@@ -95,7 +94,7 @@ function HookPage(props) {
         />
       </div>
 
-     
+
     </div>
   )
 }

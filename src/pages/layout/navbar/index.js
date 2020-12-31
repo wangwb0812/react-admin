@@ -2,7 +2,7 @@ import React from 'react'
 import { Avatar } from 'antd';
 import { Menu, Dropdown } from 'antd';
 import './index.scss'
-
+import { withRouter } from 'react-router-dom'
 class Navbar extends React.Component {
   constructor(props) {
     super(props)
@@ -13,6 +13,7 @@ class Navbar extends React.Component {
   handleMenuClick(e) {
     console.log('click', e, this);
     if (e.key === '0') {
+      localStorage.removeItem('userInfo')
       this.props.history.push('/login')
     }
   }
@@ -29,7 +30,7 @@ class Navbar extends React.Component {
     return (
       <div className="navbar">
         <div className="right-menu">
-          <Dropdown overlay={menu}>
+          <Dropdown overlay={menu} trigger="click">
             <Avatar
               style={{ backgroundColor: '#87d068', verticalAlign: 'middle' }}
               size={40}
@@ -42,4 +43,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)

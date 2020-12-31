@@ -101,20 +101,18 @@ class Todo extends React.Component {
           search: 'id=1',
         }}
       >
-        <h1 className="todo-title">今日事，今日毕</h1>
+        <h1 className="todo-title">go todolist</h1>
       </Link>
       <NavLink
         to={{
-          pathname: '/todolist',
-          search: 'id=2',
-        }}
-        activeStyle={{
-          fontWeight: 'bold',
-          color: 'red'
+          pathname: '/hookpage'
         }}
       >
-        <h1 className="todo-title">今日事，今日毕</h1>
+        <h1 className="todo-title">go Hook</h1>
       </NavLink>
+
+      <h1 className="todo-title">今日事，今日毕</h1>
+      
       <Card title={<Add addList={this.addList.bind(this)} />} style={{ width: '100%' }}>
         <List
           dataSource={this.state.todoList}

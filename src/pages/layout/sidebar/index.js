@@ -3,20 +3,62 @@ import { Menu } from 'antd';
 import logoImg from '../../../imgs/logo.png'
 import { connect } from 'react-redux'
 import { collapsChange } from '../../../store/common/action'
-import {
-  PieChartOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
-} from '@ant-design/icons';
-
+import { PieChartOutlined } from '@ant-design/icons';
+import { withRouter } from "react-router";
+const { SubMenu } = Menu;
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      menuList: [
+        {
+          name: 'TODO',
+          path: '/todo'
+        },
+        {
+          name: 'TODOLIST',
+          path: '/todolist'
+        },
+        {
+          name: 'HOOK',
+          path: '/hookpage'
+        },
+        {
+          name: 'DEMO',
+          path: '/demo',
+          children: [
+            {
+              name: 'REDUXDEMO',
+              path: '/demo/redux'
+            }
+          ]
+        }
+      ],
+      current: []
+    }
   }
 
-  menuItemClick(item, key, keyPath, domEvent) {
-    console.log(item, key, keyPath, domEvent, this.props)
+  menuItemClick(item) {
+    this.props.history.push(item.key)
+    this.setState({
+      current: [item.key]
+    });
+  }
+  
+  componentDidUpdate() {
+    const { pathname } = this.props.location
+    if (this.state.current[0] !== pathname) {
+      this.setState({
+        current: [pathname]
+      });
+    }
+  }
+
+  componentDidMount() {
+    const { pathname } = this.props.location
+    this.setState({
+      current: [pathname]
+    })
   }
 
   render() {
@@ -29,26 +71,42 @@ class Sidebar extends React.Component {
           <span className="muen-top-title">管理系统</span>
         </div>
         <Menu
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          selectedKeys={this.state.current}
           mode="inline"
           theme="dark"
           inlineCollapsed={this.props.collapsed}
-          onClick={this.menuItemClick}
+          onClick={this.menuItemClick.bind(this)}
         >
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Option 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <Menu.Item key="3" icon={<ContainerOutlined />}>
-            Option 3
-          </Menu.Item>
+          {
+            this.state.menuList.map((item, index) => {
+              if (item.children) {
+                return (
+                  <SubMenu key={item.path} icon={<PieChartOutlined />} title={item.name}>
+                    {
+                      item.children.map(item => {
+                        return (
+                          <Menu.Item key={item.path} icon={<PieChartOutlined />}>
+                            {item.name}
+                          </Menu.Item>
+                        )
+                      })
+                    }
+                  </SubMenu>
+                )
+              } else {
+                return (
+                  <Menu.Item key={item.path} icon={<PieChartOutlined />}>
+                    {item.name}
+                  </Menu.Item>
+                )
+              }
+
+            })
+          }
         </Menu>
       </div>
     );
   }
 }
 
-export default connect(state => state.common, { collapsChange })(Sidebar) 
+export default connect(state => state.common, { collapsChange })(withRouter(Sidebar)) 

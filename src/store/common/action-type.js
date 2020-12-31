@@ -1,1 +1,2 @@
 export const TOGGLE_COLLAPSED = 'TOGGLE_COLLAPSED'
+export const SET_USER_INFO = 'SET_USER_INFO'

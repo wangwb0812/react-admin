@@ -5,3 +5,10 @@ export const collapsChange = () => {
     type: common['TOGGLE_COLLAPSED']
   }
 }
+
+export const setUserInfo = (value) => {
+  return {
+    type: common['SET_USER_INFO'],
+    value
+  }
+}

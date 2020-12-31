@@ -10,7 +10,7 @@ class Appmain extends React.Component {
       <div className="app-wrapper">
         <Switch>
           <Route path='/todo' render={() => (<Todo />)} />
-          <Route path='/demo' component={Demo} />
+          <Route path='/demo/redux' component={Demo} />
           <Route path='/todolist' component={Todolist} />
           <Route path='/hookpage' render={(props) => (<HookPage {...props} />)} />
         </Switch>
